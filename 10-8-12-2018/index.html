@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>JS</title>
+</head>
+<body>
+	<img id="image" src="offLight.gif"> 
+    <button onclick="turnOnOff()">Turn On/Off the light</button>
+
+    <script> 
+    function turnOnOff() {
+     var image = document.getElementById('image'); 
+
+     if (image.src.match("onLight") != null) 
+         image.src = "offLight.gif"; 
+     else
+         image.src = "onLight.gif"; 
+    } 
+
+    console.log(document.getElementById('image').src.match('offLight'));
+    </script> 
+</body>
+</html>

@@ -1,0 +1,13 @@
+.left-box {
+	height: 200px;
+	border: 10px solid green;
+}
+.right-box {
+	height: 200px;
+	border: 10px solid green;
+}
+@media only screen and (max-width: 767px) {
+	.left-box, .right-box {
+		border: 3px solid red;
+	}
+}

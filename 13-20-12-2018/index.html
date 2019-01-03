@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+  <button id="js-post-button">Get Post</button>
+  <button id="js-button">Click Me Pls !</button>
+  <div id="js-div-table"></div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      $('#js-post-button').click(function () {
+        console.log('Hello world');
+      });
+      $('#js-button').click(function () {
+        // $.get('./data.json', function (response) {
+        $.get('https://namcoi.com/projects/laravel-crud/api/users', function (response) {
+          var table = '<table id="js-table" class="table"></table>';
+          $('#js-div-table').append(table);
+          var thead = '<thead id="js-thead"></thead>';
+          $(thead).appendTo('#js-table');
+          var tr = '<tr id="js-tr-head"></tr>';
+          $(tr).appendTo('#js-thead');
+          var th = '<th>#</th><th>Name</th><th>Email</th>';
+          $(th).appendTo('#js-tr-head');
+          var tbody = ' <tbody></tbody>';
+          $('#js-thead').after(tbody);
+          for (i = 0; i < response.length; i++) {
+            var trBody = '<tr id="trBody-' + response[i].id + '"></tr>';
+            $(trBody).appendTo('tbody');
+            var thBody = ' <th>' + (i + 1) + '</th>';
+            var tdBody = '<td>' + response[i].name + '</td><td>' + response[i].email + '</td> ';
+            $('#trBody-' + response[i].id).append(thBody, tdBody);
+          }
+        });
+      })
+    });
+  </script>
+</body>
+
+</html>
